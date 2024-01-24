@@ -18,6 +18,13 @@ export default function Page({ builtOn }: PageProps) {
       <form action="/api/revalidate" method="post">
         <button>Revalidate</button>
       </form>
+      <button
+        onClick={() => {
+          throw new Error("Test error");
+        }}
+      >
+        Test Sentry Error
+      </button>
     </div>
   );
 }
