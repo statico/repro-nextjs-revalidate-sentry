@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   next@14.1.0:
-    hash: vzispt6zmcpdyg7vvgbxffhebu
+    hash: doyykhpcs6bwoternmlafjiyyq
     path: patches/next@14.1.0.patch
 
 dependencies:
@@ -15,7 +15,7 @@ dependencies:
     version: 7.95.0(next@14.1.0)(react@18.2.0)
   next:
     specifier: ^14.1.0
-    version: 14.1.0(patch_hash=vzispt6zmcpdyg7vvgbxffhebu)(react-dom@18.2.0)(react@18.2.0)
+    version: 14.1.0(patch_hash=doyykhpcs6bwoternmlafjiyyq)(react-dom@18.2.0)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -255,7 +255,7 @@ packages:
       '@sentry/vercel-edge': 7.95.0
       '@sentry/webpack-plugin': 1.21.0
       chalk: 3.0.0
-      next: 14.1.0(patch_hash=vzispt6zmcpdyg7vvgbxffhebu)(react-dom@18.2.0)(react@18.2.0)
+      next: 14.1.0(patch_hash=doyykhpcs6bwoternmlafjiyyq)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       resolve: 1.22.8
       rollup: 2.78.0
@@ -596,7 +596,7 @@ packages:
     hasBin: true
     dev: false
 
-  /next@14.1.0(patch_hash=vzispt6zmcpdyg7vvgbxffhebu)(react-dom@18.2.0)(react@18.2.0):
+  /next@14.1.0(patch_hash=doyykhpcs6bwoternmlafjiyyq)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wlzrsbfeSU48YQBjZhDzOwhWhGsy+uQycR8bHAOt1LY1bn3zZEcDyHQOEoN3aWzQ8LHCAJ1nqrWCc9XF2+O45Q==}
     engines: {node: '>=18.17.0'}
     hasBin: true

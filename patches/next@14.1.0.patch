@@ -8,14 +8,14 @@ index 0000000000000000000000000000000000000000..7c2feb7ef4731d430facfcafcbac59e3
 +  "editor.formatOnSave": false
 +}
 diff --git a/dist/esm/server/api-utils/node/api-resolver.js b/dist/esm/server/api-utils/node/api-resolver.js
-index c17e87021edc9717a08ad938ab5a592fab7dc2e8..e0fb521b49b2ea1f5abd1ce601975b8b29cc788e 100644
+index c17e87021edc9717a08ad938ab5a592fab7dc2e8..b0cc17b1eaae2e7be35efaf4084962b60c7e0614 100644
 --- a/dist/esm/server/api-utils/node/api-resolver.js
 +++ b/dist/esm/server/api-utils/node/api-resolver.js
 @@ -188,8 +188,16 @@ async function revalidate(urlPath, opts, req, context) {
              revalidateHeaders[key] = req.headers[key];
          }
      }
-+    console.log('XXX =========== REVALIDATE ================');
++    console.log('XXX =========== REVALIDATE (dist/esm) ================');
 +    console.log('XXX urlPath', urlPath);
 +    console.log('XXX opts', JSON.stringify(opts, null, 2));
 +    console.log('XXX context', JSON.stringify(context, null, 2));
@@ -42,14 +42,14 @@ index c17e87021edc9717a08ad938ab5a592fab7dc2e8..e0fb521b49b2ea1f5abd1ce601975b8b
                  urlPath,
                  revalidateHeaders,
 diff --git a/dist/server/api-utils/node/api-resolver.js b/dist/server/api-utils/node/api-resolver.js
-index b6be7d04494b37a84707bb4b414ab1e2c513c3c1..50cde5ed01cfb1536e688d2a60578d802e23b72f 100644
+index b6be7d04494b37a84707bb4b414ab1e2c513c3c1..7adfa679c68270431cfb5497c540485cc80b3c84 100644
 --- a/dist/server/api-utils/node/api-resolver.js
 +++ b/dist/server/api-utils/node/api-resolver.js
 @@ -203,8 +203,16 @@ async function revalidate(urlPath, opts, req, context) {
              revalidateHeaders[key] = req.headers[key];
          }
      }
-+    console.log('XXX =========== REVALIDATE ================');
++    console.log('XXX =========== REVALIDATE (dist/server) ================');
 +    console.log('XXX urlPath', urlPath);
 +    console.log('XXX opts', JSON.stringify(opts, null, 2));
 +    console.log('XXX context', JSON.stringify(context, null, 2));
