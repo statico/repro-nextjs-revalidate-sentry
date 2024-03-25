@@ -1,0 +1,77 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+new file mode 100644
+index 0000000000000000000000000000000000000000..7c2feb7ef4731d430facfcafcbac59e3ea861849
+--- /dev/null
++++ b/.vscode/settings.json
+@@ -0,0 +1,3 @@
++{
++  "editor.formatOnSave": false
++}
+diff --git a/dist/esm/server/api-utils/node/api-resolver.js b/dist/esm/server/api-utils/node/api-resolver.js
+index c17e87021edc9717a08ad938ab5a592fab7dc2e8..e0fb521b49b2ea1f5abd1ce601975b8b29cc788e 100644
+--- a/dist/esm/server/api-utils/node/api-resolver.js
++++ b/dist/esm/server/api-utils/node/api-resolver.js
+@@ -188,8 +188,16 @@ async function revalidate(urlPath, opts, req, context) {
+             revalidateHeaders[key] = req.headers[key];
+         }
+     }
++    console.log('XXX =========== REVALIDATE ================');
++    console.log('XXX urlPath', urlPath);
++    console.log('XXX opts', JSON.stringify(opts, null, 2));
++    console.log('XXX context', JSON.stringify(context, null, 2));
++    console.log('XXX req.headers', JSON.stringify(req.headers, null, 2));
++    console.log('XXX revalidateHeaders', JSON.stringify(revalidateHeaders, null, 2));
++    console.log('XXX allowedRevalidateHeaderKeys', JSON.stringify(allowedRevalidateHeaderKeys, null, 2));
+     try {
+         if (context.trustHostHeader) {
++            console.log('XXX fetching', `https://${req.headers.host}${urlPath}`);
+             const res = await fetch(`https://${req.headers.host}${urlPath}`, {
+                 method: "HEAD",
+                 headers: revalidateHeaders
+@@ -198,10 +206,12 @@ async function revalidate(urlPath, opts, req, context) {
+             // a non-200 status code can be returned from a successful revalidate
+             // e.g. notFound: true returns 404 status code but is successful
+             const cacheHeader = res.headers.get("x-vercel-cache") || res.headers.get("x-nextjs-cache");
++            console.log('XXX cacheHeader', cacheHeader);
+             if ((cacheHeader == null ? void 0 : cacheHeader.toUpperCase()) !== "REVALIDATED" && !(res.status === 404 && opts.unstable_onlyGenerated)) {
+                 throw new Error(`Invalid response ${res.status}`);
+             }
+         } else if (context.revalidate) {
++            console.log('XXX calling context.revalidate');
+             await context.revalidate({
+                 urlPath,
+                 revalidateHeaders,
+diff --git a/dist/server/api-utils/node/api-resolver.js b/dist/server/api-utils/node/api-resolver.js
+index b6be7d04494b37a84707bb4b414ab1e2c513c3c1..50cde5ed01cfb1536e688d2a60578d802e23b72f 100644
+--- a/dist/server/api-utils/node/api-resolver.js
++++ b/dist/server/api-utils/node/api-resolver.js
+@@ -203,8 +203,16 @@ async function revalidate(urlPath, opts, req, context) {
+             revalidateHeaders[key] = req.headers[key];
+         }
+     }
++    console.log('XXX =========== REVALIDATE ================');
++    console.log('XXX urlPath', urlPath);
++    console.log('XXX opts', JSON.stringify(opts, null, 2));
++    console.log('XXX context', JSON.stringify(context, null, 2));
++    console.log('XXX req.headers', JSON.stringify(req.headers, null, 2));
++    console.log('XXX revalidateHeaders', JSON.stringify(revalidateHeaders, null, 2));
++    console.log('XXX allowedRevalidateHeaderKeys', JSON.stringify(allowedRevalidateHeaderKeys, null, 2));
+     try {
+         if (context.trustHostHeader) {
++            console.log('XXX fetching', `https://${req.headers.host}${urlPath}`);
+             const res = await fetch(`https://${req.headers.host}${urlPath}`, {
+                 method: "HEAD",
+                 headers: revalidateHeaders
+@@ -213,10 +221,12 @@ async function revalidate(urlPath, opts, req, context) {
+             // a non-200 status code can be returned from a successful revalidate
+             // e.g. notFound: true returns 404 status code but is successful
+             const cacheHeader = res.headers.get("x-vercel-cache") || res.headers.get("x-nextjs-cache");
++            console.log('XXX cacheHeader', cacheHeader);
+             if ((cacheHeader == null ? void 0 : cacheHeader.toUpperCase()) !== "REVALIDATED" && !(res.status === 404 && opts.unstable_onlyGenerated)) {
+                 throw new Error(`Invalid response ${res.status}`);
+             }
+         } else if (context.revalidate) {
++            console.log('XXX calling context.revalidate');
+             await context.revalidate({
+                 urlPath,
+                 revalidateHeaders,
