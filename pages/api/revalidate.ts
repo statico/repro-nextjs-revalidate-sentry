@@ -5,8 +5,11 @@ export default async function handler(
   res: NextApiResponse
 ) {
   await res.revalidate("/");
-  // console.log("XXX REQUEST", JSON.stringify(req, null, 2));
-  // console.log("XXX RESPONSE", JSON.stringify(res, null, 2));
+
+  console.log("XXX COOKIES", JSON.stringify(req.cookies, null, 2));
+  console.log("XXX HEADERS", JSON.stringify(req.headers, null, 2));
+  console.log("XXX PREVIEW", JSON.stringify(req.preview, null, 2));
+
   res.setHeader("Location", "/");
   res.status(302);
   res.end();
